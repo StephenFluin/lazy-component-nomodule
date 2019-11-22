@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lazy-test';
+  constructor(private cfr: ComponentFactoryResolver, private vcr: ViewContainerRef) {
+
+  }
+  async load() {
+    const { LazyComponent } = await import('./lazy/lazy/lazy.component');
+    this.vcr.createComponent(this.cfr.resolveComponentFactory(LazyComponent));
+  }
 }
