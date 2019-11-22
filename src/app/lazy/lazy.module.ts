@@ -6,7 +6,7 @@ import { OtherComponent } from './other/other.component';
 
 
 @NgModule({
-  declarations: [LazyComponent, OtherComponent],
+  declarations: [OtherComponent],
   imports: [
     CommonModule
   ]
